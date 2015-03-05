@@ -1,10 +1,33 @@
-# README
+# STM32F4 Base
 
-This is the smallest-possible example program using libopencm3.
+**WORK IN PROGRESS**
 
-It's intended for the ST STM32F4DISCOVERY eval board. It should blink
-the GREEN LED on the board.
+Base repository for building firmware to upload to the STM32F4 Discovery board.
 
-## Board connections
+## Directories
 
-*none required*
+### firmware
+Output directory for single firmware generated from src into elf format for flashing.
+
+### src
+Source files.
+
+### test
+Directory for containing tests which are ran using the system compiler to run coverage.
+
+### libopencm3
+Abstraction library for Cortex M3 microcontrollers.
+
+## Commands
+
+### make
+Builds the files in `src` into `firmware`
+
+### make test
+Builds and runs `test/coverage`
+
+### make clean
+Remove build files from `test` and `src`.
+
+### make flash
+Builds `firmware` and then runs openocd to flash the firmware onto the board.
