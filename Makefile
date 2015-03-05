@@ -19,7 +19,8 @@
 
 BINARY = miniblink
 
-LDSCRIPT = ../stm32f4-discovery.ld
+OPENCM3_DIR = ./libopencm3
+LDSCRIPT = stm32f4-discovery.ld
 
-include ../../Makefile.include
+include ./libopencm3.target.mk
 
