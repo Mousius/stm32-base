@@ -2,5 +2,8 @@
 *.elf
 *.map
 *.o
+*.bin
+*.gcda
+*.gcno
 
 firmware/*

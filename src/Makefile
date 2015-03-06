@@ -28,4 +28,9 @@ BMP_PORT	?=
 # texane/stlink specific variables
 #STLINK_PORT	?= :4242
 
+################################################################################
+# Compile all the .c files to link into the binary
+CFILES=$(shell find . -name \*.c)
+OBJS=$(CFILES:.c=.o)
+
 include ../Makefile.rules

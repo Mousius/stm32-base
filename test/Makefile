@@ -1,20 +1,34 @@
-###############################################################################
-# Always coverage binary
-BINARY=coverage
-
 ################################################################################
 # Library configuration
 OPENCM3_DIR = ../libopencm3
-LDSCRIPT =
-PREFIX = x86_64-linux-gnu
 
 ################################################################################
 # Compiler arguments
+DEFS = -DSTM32F4
 
-LIBNAME		= opencm3_stm32f4
-DEFS		= -DSTM32F4
+################################################################################
+# Coverage
+CFLAGS += -O0 --coverage
+LDFLAGS += -lgcov -lcmocka
 
-FP_FLAGS	=
-ARCH_FLAGS	=
+################################################################################
+# Grab all _test.c files and translate to runners
+CFILES=$(shell find . -name \*_test.c)
+RUNNERS=$(patsubst %_test.c, %.bin, $(CFILES))
 
-include ../Makefile.rules
+all: $(RUNNERS)
+	../scripts/gcovr --object-directory=. -r ../src
+
+clean:
+	$(RM) *.bin *.gcov *.gcda *.gcno *.o
+
+%.bin: %.o %_test.o
+	gcc -o $(*).bin $(*).o $(*)_test.o $(LDFLAGS)
+	./$(*).bin
+
+%_test.o:
+	gcc -c -o $(*)_test.o $(*)_test.c $(CFLAGS)
+
+%.o:
+	gcc -c -o $(*).o ../src/$(*).c  -I$(OPENCM3_DIR)/include $(DEFS) ${CFLAGS}
+
