@@ -2152,10 +2152,17 @@ else:
 # Get data files
 #
 if len(args) == 1:
+    datafiles_dir = []
+
     if options.root is None:
-        datafiles = get_datafiles(["."], options)
+        datafiles_dir.append('.')
     else:
-        datafiles = get_datafiles([options.root], options)
+        datafiles_dir.append(options.root)
+
+    if options.objdir != None:
+        datafiles_dir.append(options.objdir)
+
+    datafiles = get_datafiles(datafiles_dir, options)
 else:
     datafiles = get_datafiles(args[1:], options)
 #
