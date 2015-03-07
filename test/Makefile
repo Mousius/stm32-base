@@ -1,16 +1,16 @@
 ################################################################################
 # Library configuration
-OPENCM3_DIR = ../libopencm3
+OPENCM3_DIR	= ../libopencm3
 
 ################################################################################
 # Compiler arguments
-DEFS = -DSTM32F3
+DEFS 		= -DSTM32F3
 
 ################################################################################
 # Coverage
-CFLAGS += -O0 --coverage
-LDFLAGS += -lgcov -lcmocka
-DEFS += -DUNIT_TESTING
+CFLAGS 		+= -O0 --coverage
+LDFLAGS 	+= -lgcov -lcmocka
+DEFS 		+= -DUNIT_TESTING
 
 ################################################################################
 # Grab all _test.c files and translate to runners
