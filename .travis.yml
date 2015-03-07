@@ -11,4 +11,4 @@ before_script:
 script:
   - make test
 after_success:
-  - coveralls --exclude libopencm3/ -E "(.*)_test\.c"
+  - coveralls --exclude libopencm3/ -E "(.*)_test\.c" --no-gcov

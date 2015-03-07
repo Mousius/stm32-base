@@ -749,7 +749,9 @@ def process_datafile(filename, covdata, options):
 
     cmd = [
         options.gcov_cmd, abs_filename,
-        "--branch-counts", "--branch-probabilities", "--preserve-paths",
+        #"--branch-counts",
+        #"--branch-probabilities",
+        "--preserve-paths",
         '--object-directory', dirname
     ]
 
