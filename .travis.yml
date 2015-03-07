@@ -1,0 +1,14 @@
+language: cpp
+compiler:
+  - gcc
+before_install:
+  - wget https://launchpad.net/ubuntu/+source/cmocka/0.4.1-2/+build/6056049/+files/libcmocka-dev_0.4.1-2_amd64.deb
+  - wget https://launchpad.net/ubuntu/+source/cmocka/0.4.1-2/+build/6056049/+files/libcmocka0_0.4.1-2_amd64.deb
+  - sudo dpkg -i libcmocka-dev_0.4.1-2_amd64.deb libcmocka0_0.4.1-2_amd64.deb
+  - sudo pip install cpp-coveralls
+before_script:
+  - git submodule update --init
+script:
+  - make test
+after_success:
+  - coveralls --exclude libopencm3/ -E "(.*)_test\.c"
