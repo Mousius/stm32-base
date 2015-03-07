@@ -3,7 +3,7 @@ ifneq ($(V),1)
 Q		:= @
 endif
 
-STYLECHECK		:= ./libopencm3/scripts/checkpatch.pl
+STYLECHECK		:= ./scripts/checkpatch.pl
 STYLECHECKFLAGS	:= --no-tree -f --terse --mailback
 STYLECHECKFILES	:= $(shell find . -name '*.[ch]' -not -path './libopencm3/*')
 

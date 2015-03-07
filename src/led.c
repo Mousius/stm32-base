@@ -22,7 +22,7 @@ void led_setup(void)
 	gpio_mode_setup(GPIOE, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO12);
 }
 
-void led_toggle()
+void led_toggle(void)
 {
 	/* LED on/off */
 	gpio_toggle(GPIOE, GPIO12);

@@ -4,17 +4,17 @@
 #include <stdint.h>
 #include <cmocka.h>
 
-void led_setup()
+void led_setup(void)
 {
 	mock();
 }
 
-void led_toggle()
+void led_toggle(void)
 {
 	mock();
 }
 
-static void test_led_called()
+static void test_led_called(void)
 {
 	will_return(led_setup, 0);
 	will_return(led_toggle, 0);

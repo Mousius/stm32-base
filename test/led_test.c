@@ -28,7 +28,7 @@ void gpio_toggle(uint32_t port, uint16_t pin)
 	mock();
 }
 
-static void test_led_setup()
+static void test_led_setup(void)
 {
 	expect_value(rcc_periph_clock_enable, i, RCC_GPIOE);
 	will_return(rcc_periph_clock_enable, 0);
@@ -42,7 +42,7 @@ static void test_led_setup()
 	led_setup();
 }
 
-static void test_led_toggle()
+static void test_led_toggle(void)
 {
 	 expect_value(gpio_toggle, port, GPIOE);
 	 expect_value(gpio_toggle, pin, GPIO12);
