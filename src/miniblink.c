@@ -23,13 +23,20 @@
 
 #include "led.h"
 
+#if UNIT_TESTING
+#define main test_main
+#define MAIN_LOOP
+#else
+#define MAIN_LOOP while (1)
+#endif
+
 int main(void)
 {
 	int i;
 
 	led_setup();
 
-	while (1) {
+	MAIN_LOOP {
 		led_toggle();
 		for (i = 0; i < 1000000; i++) {
 			__asm__("nop");

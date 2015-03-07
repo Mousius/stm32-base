@@ -3,19 +3,41 @@
 #include <setjmp.h>
 #include <cmocka.h>
 
-typedef unsigned char uint8_t;
+#include <libopencm3/stm32/rcc.h>
+#include <libopencm3/stm32/gpio.h>
 
-void rcc_periph_clock_enable(unsigned char i) {
+void rcc_periph_clock_enable(enum rcc_periph_clken i) {
+    check_expected(i);
+    mock();
 }
 
-void gpio_mode_setup(uint8_t port, uint8_t mode, uint8_t pullup, uint8_t pin) {
+void gpio_mode_setup(uint32_t port, uint8_t mode, uint8_t pullup, uint16_t pin) {
+    check_expected(port);
+    check_expected(mode);
+    check_expected(pullup);
+    check_expected(pin);
+    mock();
 }
 
-void gpio_toggle(uint8_t port, uint8_t pin) {
+void gpio_toggle(uint32_t port, uint16_t pin) {
+}
+
+static void test_led_setup() {
+    expect_value(rcc_periph_clock_enable, i, RCC_GPIOD);
+    will_return(rcc_periph_clock_enable, 0);
+
+    expect_value(gpio_mode_setup, port, GPIOD);
+    expect_value(gpio_mode_setup, mode, GPIO_MODE_OUTPUT);
+    expect_value(gpio_mode_setup, pullup, GPIO_PUPD_NONE);
+    expect_value(gpio_mode_setup, pin, GPIO12);
+    will_return(gpio_mode_setup, 0);
+
+    led_setup();
 }
 
 int main(void) {
-    led_setup();
-
-    return 0;
+    const UnitTest tests[] = {
+        unit_test(test_led_setup)
+    };
+    return run_tests(tests);
 }
