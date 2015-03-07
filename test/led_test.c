@@ -20,6 +20,9 @@ void gpio_mode_setup(uint32_t port, uint8_t mode, uint8_t pullup, uint16_t pin) 
 }
 
 void gpio_toggle(uint32_t port, uint16_t pin) {
+    check_expected(port);
+    check_expected(pin);
+    mock();
 }
 
 static void test_led_setup() {
@@ -35,9 +38,18 @@ static void test_led_setup() {
     led_setup();
 }
 
+static void test_led_toggle() {
+     expect_value(gpio_toggle, port, GPIOD);
+     expect_value(gpio_toggle, pin, GPIO12);
+     will_return(gpio_toggle, 0);
+
+     led_toggle();
+}
+
 int main(void) {
     const UnitTest tests[] = {
-        unit_test(test_led_setup)
+        unit_test(test_led_setup),
+        unit_test(test_led_toggle)
     };
     return run_tests(tests);
 }
