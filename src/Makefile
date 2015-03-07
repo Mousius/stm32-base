@@ -1,13 +1,13 @@
 ################################################################################
 # Library configuration
 OPENCM3_DIR = ../libopencm3
-LDSCRIPT = stm32f4-discovery.ld
+LDSCRIPT = stm32f3-discovery.ld
 
 ################################################################################
 # Compiler arguments
 
-LIBNAME		= opencm3_stm32f4
-DEFS		= -DSTM32F4
+LIBNAME		= opencm3_stm32f3
+DEFS		= -DSTM32F3
 
 FP_FLAGS	?= -mfloat-abi=hard -mfpu=fpv4-sp-d16
 ARCH_FLAGS	= -mthumb -mcpu=cortex-m4 $(FP_FLAGS)
@@ -17,7 +17,7 @@ ARCH_FLAGS	= -mthumb -mcpu=cortex-m4 $(FP_FLAGS)
 
 OOCD		?= openocd
 OOCD_INTERFACE	?= stlink-v2
-OOCD_BOARD	?= stm32f4discovery
+OOCD_BOARD	?= stm32f3discovery
 
 ################################################################################
 # Black Magic Probe specific variables

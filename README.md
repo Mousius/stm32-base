@@ -1,4 +1,4 @@
-# STM32F4 Base
+# STM32 Base
 
 **WORK IN PROGRESS**
 

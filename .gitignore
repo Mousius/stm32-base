@@ -6,5 +6,6 @@
 *.gcda
 *.gcno
 *.gcov
+*.hex
 
 firmware/*

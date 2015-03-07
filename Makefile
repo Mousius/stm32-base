@@ -7,6 +7,8 @@ all: src firmware version
 
 src:
 	(cd src; $(MAKE) BINARY=$(PROJECT))
+flash: src
+	(cd src; $(MAKE) BINARY=$(PROJECT) flash)
 
 test:
 	(cd test; $(MAKE))
