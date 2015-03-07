@@ -2,6 +2,9 @@
 
 **WORK IN PROGRESS**
 
+[![Build Status](https://travis-ci.org/DaMouse404/stm32f4-base.svg?branch=master)](https://travis-ci.org/DaMouse404/stm32f4-base)
+[![Coverage Status](https://coveralls.io/repos/DaMouse404/stm32f4-base/badge.svg?branch=master)](https://coveralls.io/r/DaMouse404/stm32f4-base?branch=master)
+
 Base repository for building firmware to upload to the STM32F4 Discovery board.
 
 ## Directories
