@@ -2,8 +2,8 @@
 
 **WORK IN PROGRESS**
 
-[![Build Status](https://travis-ci.org/DaMouse404/stm32-base.svg?branch=master)](https://travis-ci.org/DaMouse404/stm32f4-base)
-[![Coverage Status](https://coveralls.io/repos/DaMouse404/stm32-base/badge.svg?branch=master)](https://coveralls.io/r/DaMouse404/stm32f4-base?branch=master)
+[![Build Status](https://travis-ci.org/DaMouse404/stm32-base.svg?branch=master)](https://travis-ci.org/DaMouse404/stm32-base)
+[![Coverage Status](https://coveralls.io/repos/DaMouse404/stm32-base/badge.svg?branch=master)](https://coveralls.io/r/DaMouse404/stm32-base?branch=master)
 
 Base repository for building firmware to upload to a STM32 Discovery board.
 
