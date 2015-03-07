@@ -5,20 +5,25 @@
 
 void led_setup(void)
 {
-	/* Enable GPIOD clock. */
-	/* Manually: */
-	// RCC_AHB1ENR |= RCC_AHB1ENR_IOPDEN;
-	/* Using API functions: */
+	/* Enable GPIOD clock.
+	 * Manually:
+	 * RCC_AHB1ENR |= RCC_AHB1ENR_IOPDEN;
+	 * Using API functions:
+	 */
 	rcc_periph_clock_enable(RCC_GPIOE);
 
-	/* Set GPIO12 (in GPIO port D) to 'output push-pull'. */
-	/* Manually: */
-	// GPIOD_CRH = (GPIO_CNF_OUTPUT_PUSHPULL << (((8 - 8) * 4) + 2));
-	// GPIOD_CRH |= (GPIO_MODE_OUTPUT_2_MHZ << ((8 - 8) * 4));
-	/* Using API functions: */
+	/*
+	 * set gpio12 (in gpio port d) to 'output push-pull'.
+	 * manually:
+	 * gpiod_crh = (gpio_cnf_output_pushpull << (((8 - 8) * 4) + 2));
+	 * gpiod_crh |= (gpio_mode_output_2_mhz << ((8 - 8) * 4));
+	 * Using API functions:
+	 */
 	gpio_mode_setup(GPIOE, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO12);
 }
 
-void led_toggle() {
-	gpio_toggle(GPIOE, GPIO12);	/* LED on/off */
+void led_toggle()
+{
+	/* LED on/off */
+	gpio_toggle(GPIOE, GPIO12);
 }

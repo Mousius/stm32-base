@@ -25,9 +25,9 @@
 
 #if UNIT_TESTING
 #define main test_main
-#define MAIN_LOOP
+#define loop 0
 #else
-#define MAIN_LOOP while (1)
+#define loop 1
 #endif
 
 int main(void)
@@ -36,12 +36,12 @@ int main(void)
 
 	led_setup();
 
-	MAIN_LOOP {
+	do {
 		led_toggle();
 		for (i = 0; i < 1000000; i++) {
 			__asm__("nop");
 		}
-	}
+	} while (loop);
 
 	return 0;
 }

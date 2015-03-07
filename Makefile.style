@@ -1,0 +1,23 @@
+# Be silent per default, but 'make V=1' will show all compiler calls.
+ifneq ($(V),1)
+Q		:= @
+endif
+
+STYLECHECK		:= ./libopencm3/scripts/checkpatch.pl
+STYLECHECKFLAGS	:= --no-tree -f --terse --mailback
+STYLECHECKFILES	:= $(shell find . -name '*.[ch]' -not -path './libopencm3/*')
+
+stylecheck: $(STYLECHECKFILES:=.stylecheck)
+styleclean: $(STYLECHECKFILES:=.styleclean)
+
+# the cat is due to multithreaded nature - we like to have consistent chunks of text on the output
+%.stylecheck: styleclean %
+	$(Q)$(SCRIPT_DIR)$(STYLECHECK) $(STYLECHECKFLAGS) $* > $*.stylecheck; \
+		if [ -s $*.stylecheck ]; then \
+			cat $*.stylecheck; \
+		else \
+			rm -f $*.stylecheck; \
+		fi;
+
+%.styleclean:
+	$(Q)rm -f $*.stylecheck;

@@ -7,5 +7,6 @@
 *.gcno
 *.gcov
 *.hex
+*.stylecheck
 
 firmware/*

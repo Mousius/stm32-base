@@ -22,3 +22,5 @@ firmware:
 
 version:
 	mv src/$(PROJECT).elf firmware/$(PROJECT)-$(GIT_VERSION).elf
+
+include Makefile.style
