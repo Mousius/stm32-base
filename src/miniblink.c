@@ -23,7 +23,7 @@
 
 #include "led.h"
 
-#if UNIT_TESTING
+#ifdef UNIT_TESTING
 #define main test_main
 #define loop 0
 #else
